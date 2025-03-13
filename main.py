@@ -299,7 +299,6 @@ def main():
         os.system('afplay /System/Library/Sounds/Glass.aiff')
     elif platform.system() == "Windows":
         os.system('powershell -Command "[console]::beep(1000, 500)"')
-    
     # Kindleを最小化する
     minimize_kindle_app()
     
