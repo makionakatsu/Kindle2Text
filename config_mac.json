@@ -1,0 +1,14 @@
+{
+    "tessdata_prefix": "./tessdata",
+    "screenshot_region": [70, 70, 1850, 1000],
+    "max_queued_images": 5,
+    "output_file": "./book.txt",
+    "kindle_app_name": "Kindle",
+    "page_turn_delay": 5,
+    "activation_delay": 5,
+    "ocr_engine_mode": 3,
+    "page_segmentation_mode": 6,
+    "language": "jpn_vert",
+    "text_orientation": "vertical",
+    "page_turn_direction": "left"
+}

@@ -1,0 +1,85 @@
+##推奨設定　；日本語縦読み左送り
+{
+  "tessdata_prefix": "./tessdata",
+  "screenshot_region": [70, 70, 1850, 1000],
+  "max_queued_images": 5,
+  "output_file": "./book.txt",
+  "kindle_app_name": "Kindle",
+  "page_turn_delay": 3,
+  "activation_delay": 5,
+  "ocr_engine_mode": 3,
+  "page_segmentation_mode": 6,
+  "language": "jpn_vert",
+  "text_orientation": "vertical",
+  "page_turn_direction": "left"
+}
+
+##推奨設定２　；英語横読み右送り
+{
+  "tessdata_prefix": "./tessdata",
+  "screenshot_region": [70, 70, 1850, 1000],
+  "max_queued_images": 5,
+  "output_file": "./book.txt",
+  "kindle_app_name": "Kindle",
+  "page_turn_delay": 3,
+  "activation_delay": 5,
+  "ocr_engine_mode": 3,
+  "page_segmentation_mode": 6,
+  "language": "eng",
+  "text_orientation": "horizontal",
+  "page_turn_direction": "right"
+}
+
+##推奨設定３　；日本語横読み右送り
+{
+  "tessdata_prefix": "./tessdata",
+  "screenshot_region": [70, 70, 1850, 1000],
+  "max_queued_images": 5,
+  "output_file": "./book.txt",
+  "kindle_app_name": "Kindle",
+  "page_turn_delay": 3,
+  "activation_delay": 5,
+  "ocr_engine_mode": 3,
+  "page_segmentation_mode": 6,
+  "language": "jpn",
+  "text_orientation": "horizontal",
+  "page_turn_direction": "right"
+}
+
+##項目の解説
+
+tessdata_prefix: Tesseract OCR の学習データが保存されているディレクトリを設定
+例: "./tessdata", "/usr/share/tessdata" など。
+
+screenshot_region: スクリーンショットを撮影する領域を [x, y, width, height] の形式で設定
+例: [50, 100, 1580, 900]
+
+max_queued_images: OCR処理待ち画像の最大数を設定する
+例: 5, 10 など
+
+output_file: OCR結果を保存するファイル名を指定する
+例: "./book.txt", "./output.txt" など
+
+kindle_app_name: 操作対象の Kindle アプリの名前を指定する
+例: "Kindle", "Kindle for PC" など
+
+page_turn_delay: ページ送りの操作間隔（秒）を設定する
+例: 3, 5 など
+
+activation_delay: Kindleアプリをアクティブ化する際の待機時間（秒）を設定する
+例: 5, 10 など
+
+ocr_engine_mode: Tesseract のエンジンモードを指定する
+例: 3 (推奨), 0 (デフォルト) など
+
+page_segmentation_mode: Tesseract のページ分割モードを指定する
+例: 6 (推奨), 3, 4 など
+
+language: OCR対象の言語を指定する
+例: "jpn" (日本語横書き), "jpn_vert" (日本語縦書き), "eng" (英語)
+
+text_orientation: 画像内のテキストの向きを指定する
+例: "vertical" (縦書き), "horizontal" (横書き)
+
+page_turn_direction: ページ送りの方向を指定する
+例: "left" (左ページ送り → 日本語書籍向け), "right" (右ページ送り → 英語書籍向け)

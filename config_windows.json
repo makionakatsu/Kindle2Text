@@ -1,0 +1,14 @@
+{
+    "tessdata_prefix": "C:\\Program Files\\Tesseract-OCR\\tessdata",
+    "screenshot_region": [50, 50, 1600, 900],
+    "max_queued_images": 5,
+    "output_file": "./book.txt",
+    "kindle_app_name": "kindle.exe",
+    "page_turn_delay": 5,
+    "activation_delay": 5,
+    "ocr_engine_mode": 3,
+    "page_segmentation_mode": 6,
+    "language": "jpn_vert",
+    "text_orientation": "vertical",
+    "page_turn_direction": "left"
+}

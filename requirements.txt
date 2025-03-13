@@ -1,3 +1,9 @@
 pyautogui
 Pillow
 pytesseract
+opencv-python-headless
+numpy
+pygetwindow
+pyperclip
+keyboard
+tesseract
