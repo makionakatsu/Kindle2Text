@@ -52,7 +52,8 @@ def load_config():
         "page_turn_direction": config.get("page_turn_direction", "left"),
         "page_turn_delay": config.get("page_turn_delay", 3),
         "tessdata_prefix": config.get("tessdata_prefix", "./tessdata"),
-        "output_file": config.get("output_file", "./output.txt")
+        "output_file": config.get("output_file", "./output.txt"),
+        "kindle_app_name": config.get("kindle_app_name", "Kindle") 
     }
 
 # グローバル変数として `config` をロード
@@ -128,11 +129,11 @@ def extract_text_from_image(image, tessdata_dir, lang, text_orientation):
         print(f"OCR処理中にエラーが発生しました: {e}")
         return ""
 
-def activate_kindle_app():
+def activate_kindle_app(kindle_app_name):
     """Kindle アプリをアクティブ化する"""
     try:
         if platform.system() == "Darwin":  # macOS
-            subprocess.run(["osascript", "-e", 'tell application "Kindle" to activate'], check=True)
+            subprocess.run(["osascript", "-e", f'tell application "{kindle_app_name}" to activate'], check=True)
         elif platform.system() == "Windows":
             subprocess.run(["powershell", "-Command", "Start-Process kindle.exe"], check=True)
         time.sleep(2)
@@ -140,22 +141,22 @@ def activate_kindle_app():
         print("エラー: Kindle アプリをアクティブ化できませんでした。")
         sys.exit(1)
 
-def minimize_kindle_app():
+def minimize_kindle_app(kindle_app_name):
     """Kindle アプリを最小化する"""
     try:
         if platform.system() == "Darwin":  # macOS
-            applescript_command = '''
-            tell application "Kindle" to set miniaturized of window 1 to true
+            applescript_command = f'''
+            tell application "{kindle_app_name}" to set miniaturized of window 1 to true
             '''
             subprocess.run(["osascript", "-e", applescript_command], check=True)
         elif platform.system() == "Windows":
-            kindle_window = gw.getWindowsWithTitle("Kindle")
+            kindle_window = gw.getWindowsWithTitle(kindle_app_name)
             if kindle_window:
                 kindle_window[0].minimize()
             else:
-                print("エラー: Kindleのウィンドウが見つかりません。")
+                print(f"エラー: {kindle_app_name} のウィンドウが見つかりません。")
     except Exception as e:
-        print(f"エラー: Kindle の最小化に失敗しました。{e}")
+        print(f"エラー: {kindle_app_name} の最小化に失敗しました。{e}")
 
 def monitor_exit():
     # エンターを2回打ち込むとプログラムを終了するための監視
@@ -275,7 +276,7 @@ def main():
     # Kindle からスクリーンショットを撮影し OCR でテキストを抽出、ファイルに保存
     activation_delay = config.get('activation_delay', 5)  # `config.json` から取得
 
-    activate_kindle_app()
+    activate_kindle_app(config["kindle_app_name"])  # 修正
     show_message()
     time.sleep(activation_delay)
 
@@ -300,7 +301,7 @@ def main():
     elif platform.system() == "Windows":
         os.system('powershell -Command "[console]::beep(1000, 500)"')
     # Kindleを最小化する
-    minimize_kindle_app()
-    
+    minimize_kindle_app(config["kindle_app_name"])
+
 if __name__ == "__main__":
     main()
